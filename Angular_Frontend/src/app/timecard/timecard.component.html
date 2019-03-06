@@ -1,0 +1,21 @@
+<div class="container">
+  <form [formGroup]="myForm" (ngSubmit)="create(myForm.value)">
+
+    Value : {{ myForm.value | json }}
+  
+    <hr>
+    <mat-form-field>
+      <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="startDate" placeholder="Input disabled" disabled>
+      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+      <mat-datepicker #startDate disabled="false"></mat-datepicker>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="password" formControlName="password" autocomplete="new-password">
+  
+    </mat-form-field>
+    <hr>
+  
+    <button mat-raised-button [disabled]="myForm.invalid" color="primary">Login!</button>
+  </form>
+</div>
