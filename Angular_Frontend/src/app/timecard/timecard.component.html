@@ -5,17 +5,17 @@
   
     <hr>
     <mat-form-field>
-      <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="startDate" placeholder="Input disabled" disabled>
-      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-      <mat-datepicker #startDate disabled="false"></mat-datepicker>
+      <input matInput formControlName="startDate" [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Start Date" disabled>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
     </mat-form-field>
-  
+
     <mat-form-field>
       <input matInput placeholder="password" formControlName="password" autocomplete="new-password">
   
     </mat-form-field>
     <hr>
   
-    <button mat-raised-button [disabled]="myForm.invalid" color="primary">Login!</button>
+    <button mat-raised-button [disabled]="myForm.invalid" color="primary">Create Timecard</button>
   </form>
 </div>

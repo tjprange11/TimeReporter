@@ -7,19 +7,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 	styleUrls: [ './timecard.component.css' ]
 })
 export class TimecardComponent implements OnInit {
-	myFilter: any;
 	myForm: FormGroup;
-	constructor(private fb: FormBuilder) {
-		this.myFilter = (d: Date): boolean => {
-			const day = d.getDay();
-
-			return day == 1; // Only Modays are able to be selected
-		};
-	}
+	myFilter = (d: Date): boolean => {
+		const day = d.getDay();
+		// Prevent Saturday and Sunday from being selected.
+		return day == 1;
+	};
+	constructor(private fb: FormBuilder) {}
 
 	ngOnInit() {
 		this.myForm = this.fb.group({
-			startDate: [ '', [ Validators.required ] ],
+			startDate: [ Date(), [ Validators.required ] ],
 			password: [ '', [ Validators.required ] ]
 		});
 

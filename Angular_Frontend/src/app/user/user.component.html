@@ -1,0 +1,48 @@
+<mat-card style="background-color: #673AB7">
+  <mat-card-content>
+    <mat-toolbar style="background-color:#673AB7; color: white">
+        <button mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        <span class="extra-space">Time Reporter</span>
+        <span class="example-spacer"></span>
+        <span *ngIf="user" class="extra-space">Hello {{ user.fullName }}</span>
+        <button mat-icon-button (click)="logout()">
+            <mat-icon>logout</mat-icon>
+          </button>
+    </mat-toolbar>
+  </mat-card-content>
+</mat-card>
+
+<div style="height: 10px"></div>
+
+<mat-card class="centralcard">
+ <mat-card-content>
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <mat-card class="sidenav-card">
+        <mat-card-content>
+          <button mat-button class="sidenav-button" (click)="route = ''"><strong>Home</strong></button>
+          <button mat-button class="sidenav-button" (click)="route = 'profile'"><strong>Profile</strong></button>
+          <button mat-button class="sidenav-button" (click)="route = 'register'"><strong>Create New User</strong></button>
+          <button mat-button class="sidenav-button" (click)="route = 'timecard'"><strong>Timecards</strong></button>
+        </mat-card-content>
+      </mat-card> 
+    </mat-drawer>
+    <div>
+      <div *ngIf="route == ''">
+        <mat-card-title>Home</mat-card-title>
+        <input type="text" [(ngModel)]="user.firstName">
+        <button (click)="service.postUser(user)">Click</button>
+      </div>
+      <div *ngIf="route == 'timecard'">
+          <app-timecard></app-timecard>
+      </div>
+      <div *ngIf="route == 'register'">
+          <app-register></app-register>
+      </div>
+    </div>
+  </mat-drawer-container>
+</mat-card-content>
+</mat-card>
+

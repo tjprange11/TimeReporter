@@ -10,11 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using ASP.NET_Core_Backend.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 
-namespace ASP.NET_Core_Backend
+namespace JWT
 {
     public class Startup
     {
@@ -28,17 +25,6 @@ namespace ASP.NET_Core_Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddCors(options => options.AddPolicy("Cors", builder =>
-            {
-                builder.AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-            }));
-
-            services.AddDbContext<UserDbContext>(opt => opt.UseInMemoryDatabase("user"));
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbContext>();
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -47,16 +33,13 @@ namespace ASP.NET_Core_Backend
         {
             if (env.IsDevelopment())
             {
-                app.UseCors("Cors");
                 app.UseDeveloperExceptionPage();
             }
             else
             {
-                
                 app.UseHsts();
             }
 
-            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseMvc();
         }

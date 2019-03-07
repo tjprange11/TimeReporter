@@ -1,0 +1,28 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <form [formGroup]="myForm" (ngSubmit)="login(myForm.value)">
+      <mat-card-content>
+      
+
+          Value : {{ myForm.value | json }}
+          
+          <hr>
+          <mat-form-field>
+            <input matInput placeholder="email" formControlName="email" autocomplete="off">
+          
+          </mat-form-field>
+          
+          <mat-form-field>
+            <input matInput placeholder="password" formControlName="password" autocomplete="new-password">
+          
+          </mat-form-field>
+          <hr>
+
+      </mat-card-content>
+      <mat-card-actions style="text-align: center">
+        <button mat-raised-button [disabled]="myForm.invalid" color="primary">Login!</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
