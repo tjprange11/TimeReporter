@@ -10,7 +10,7 @@ namespace ASP.NET_Core_Backend.Models
     public class User
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey(name:"Company")]
         public int CompanyId { get; set; }
