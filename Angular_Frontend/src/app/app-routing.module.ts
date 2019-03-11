@@ -9,7 +9,8 @@ const routes: Routes = [
 	{ path: 'timecard', component: TimecardComponent },
 	{ path: '', component: LoginComponent },
 	{ path: 'user', component: UserComponent },
-	{ path: 'register', component: RegisterComponent }
+	{ path: 'register', component: RegisterComponent },
+	{ path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
