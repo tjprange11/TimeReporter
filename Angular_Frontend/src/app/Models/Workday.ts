@@ -2,6 +2,7 @@ export class Workday {
 	id: number;
 	timecardId: number;
 	taskId: number;
-	Date: Date;
+	date: Date;
 	hoursWorked: number;
+	approved: boolean;
 }

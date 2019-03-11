@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Timecard } from '../Models/Timecard';
+import { Workday } from '../Models/Workday';
 
 @Component({
 	selector: 'app-timecard',
@@ -7,22 +8,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 	styleUrls: [ './timecard.component.css' ]
 })
 export class TimecardComponent implements OnInit {
-	myForm: FormGroup;
-	myFilter = (d: Date): boolean => {
-		const day = d.getDay();
-		// Prevent Saturday and Sunday from being selected.
-		return day == 1;
-	};
-	constructor(private fb: FormBuilder) {}
+	mostRecentTimecard: Timecard;
+	mostRecentWorkdays: Workday[];
+	timecardList: Timecard[];
+	constructor() {}
 
-	ngOnInit() {
-		this.myForm = this.fb.group({
-			startDate: [ Date(), [ Validators.required ] ],
-			password: [ '', [ Validators.required ] ]
-		});
-
-		this.myForm.valueChanges.subscribe(console.log);
-	}
-
-	create(formValue) {}
+	ngOnInit() {}
 }

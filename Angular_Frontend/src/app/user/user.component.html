@@ -24,7 +24,7 @@
         <mat-card-content>
           <button mat-button class="sidenav-button" (click)="route = ''"><strong>Home</strong></button>
           <button mat-button class="sidenav-button" (click)="route = 'profile'"><strong>Profile</strong></button>
-          <button mat-button class="sidenav-button" (click)="route = 'register'"><strong>Create New User</strong></button>
+          <button mat-button class="sidenav-button" (click)="route = 'createUser'"><strong>Create New User</strong></button>
           <button mat-button class="sidenav-button" (click)="route = 'timecard'"><strong>Timecards</strong></button>
         </mat-card-content>
       </mat-card> 
@@ -38,8 +38,8 @@
       <div *ngIf="route == 'timecard'">
           <app-timecard></app-timecard>
       </div>
-      <div *ngIf="route == 'register'">
-          <app-register></app-register>
+      <div *ngIf="route == 'createUser'">
+          <app-user-create></app-user-create>
       </div>
     </div>
   </mat-drawer-container>

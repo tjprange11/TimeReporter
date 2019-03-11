@@ -17,7 +17,8 @@ namespace ASP.NET_Core_Backend.Controllers
         [HttpPost]
         public void Post([FromBody] Models.User user)
         {
-
+            db.Users.Add(user);
+            db.SaveChanges();
         }
     }
 }

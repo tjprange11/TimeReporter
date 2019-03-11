@@ -1,0 +1,14 @@
+<div class="container">
+  <form [formGroup]="myForm" (ngSubmit)="create(myForm.value)">
+  
+    <hr>
+    <mat-form-field>
+      <input matInput formControlName="startDate" [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Start Date" disabled>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <hr>
+  
+    <button mat-raised-button [disabled]="myForm.invalid" color="primary">Create Timecard</button>
+  </form>
+</div>

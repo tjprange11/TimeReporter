@@ -1,21 +1,25 @@
-<div class="container">
-  <form [formGroup]="myForm" (ngSubmit)="create(myForm.value)">
+<mat-card-title>Timecards</mat-card-title>
+<table class="currentTimecard">
+  <th>Start Date : {{ mostRecentTimecard.startDate }}</th>
+  <th>End Date : {{ mostRecentTimecard.endDate }}</th>
+</table>
+<div style="height: 20px"></div>
+<table class="currentTimecard">
+  <tr>
+    <th>Date</th>
+    <th>Task</th>
+    <th>Hours Worked</th>
+    <th>Approved</th>
+  </tr>
+  <tr *ngFor="let mostRecentWorkday of mostRecentWorkdays">
+    <td>{{ mostRecentWorkday.date }}</td>
+    <td>{{ getTaskName(mostRecentWorkday.taskId) }}</td>
+    <td>{{ mostRecentWorkday.hoursWorked }}</td>
+    <td *ngIf="mostRecentWorkday.approved">
+        <mat-icon>done</mat-icon>
+    </td>
+  </tr>
+</table>
 
-    Value : {{ myForm.value | json }}
-  
-    <hr>
-    <mat-form-field>
-      <input matInput formControlName="startDate" [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Start Date" disabled>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
-    </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="End Date" formControlName="password" autocomplete="new-password">
-  
-    </mat-form-field>
-    <hr>
-  
-    <button mat-raised-button [disabled]="myForm.invalid" color="primary">Create Timecard</button>
-  </form>
-</div>
+

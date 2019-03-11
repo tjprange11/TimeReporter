@@ -28,9 +28,11 @@ import { RegisterComponent } from './register/register.component';
 import { ApiServiceService } from './api-service.service';
 import { AuthService } from './auth.service';
 import { AuthInterceptor } from './auth.interceptor';
+import { TimecardCreateComponent } from './timecard/timecard-create/timecard-create.component';
+import { UserCreateComponent } from './user/user-create/user-create.component';
 
 @NgModule({
-	declarations: [ AppComponent, TimecardComponent, UserComponent, LoginComponent, RegisterComponent ],
+	declarations: [ AppComponent, TimecardComponent, UserComponent, LoginComponent, RegisterComponent, TimecardCreateComponent, UserCreateComponent ],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,

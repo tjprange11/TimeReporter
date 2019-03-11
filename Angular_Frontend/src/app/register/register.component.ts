@@ -13,30 +13,11 @@ export class RegisterComponent implements OnInit {
 
 	ngOnInit() {
 		this.myForm = this.fb.group({
-			firstName: [ '', [ Validators.required ] ],
-			middleInitial: [ '', [ Validators.maxLength(1) ] ],
-			lastName: [ '', [ Validators.required ] ],
 			email: [ '', [ Validators.required, Validators.email ] ],
-			password: [ '', [ Validators.required, Validators.minLength(6) ] ],
-			isSupervisor: [ false ],
-			isAdmin: [ false ],
-			deleted: [ false ],
-			companyId: [ '' ]
+			password: [ '', [ Validators.required, Validators.minLength(6) ] ]
 		});
 
 		this.myForm.valueChanges.subscribe(console.log);
-	}
-
-	get firstName() {
-		return this.myForm.get('firstName');
-	}
-
-	get middleInitial() {
-		return this.myForm.get('middleInitial');
-	}
-
-	get lastName() {
-		return this.myForm.get('lastName');
 	}
 
 	get email() {
@@ -47,22 +28,7 @@ export class RegisterComponent implements OnInit {
 		return this.myForm.get('password');
 	}
 
-	get isSupervisor() {
-		return this.myForm.get('isSupervisor');
-	}
-
-	get isAdmin() {
-		return this.myForm.get('isAdmin');
-	}
-	get deleted() {
-		return this.deleted.myForm.get('deleted');
-	}
-
 	register(formValue) {
-		var credentials: object = {
-			email: formValue.email,
-			password: formValue.password
-		};
-		this.service.register(credentials);
+		this.service.register(formValue);
 	}
 }
