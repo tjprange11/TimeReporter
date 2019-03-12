@@ -14,6 +14,12 @@ namespace ASP.NET_Core_Backend.Controllers
     public class UsersController : ControllerBase
     {
         public TimeReporterContext db = new TimeReporterContext();
+
+        [HttpGet]
+        public IEnumerable<Models.User> Get()
+        {
+            return db.Users;
+        }
         [HttpPost]
         public void Post([FromBody] Models.User user)
         {

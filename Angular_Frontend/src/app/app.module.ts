@@ -30,9 +30,11 @@ import { AuthService } from './auth.service';
 import { AuthInterceptor } from './auth.interceptor';
 import { TimecardCreateComponent } from './timecard/timecard-create/timecard-create.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
+import { HomeComponent } from './user/home/home.component';
+import { TimecardHomeComponent } from './timecard/timecard-home/timecard-home.component';
 
 @NgModule({
-	declarations: [ AppComponent, TimecardComponent, UserComponent, LoginComponent, RegisterComponent, TimecardCreateComponent, UserCreateComponent ],
+	declarations: [ AppComponent, TimecardComponent, UserComponent, LoginComponent, RegisterComponent, TimecardCreateComponent, UserCreateComponent, HomeComponent, TimecardHomeComponent ],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,

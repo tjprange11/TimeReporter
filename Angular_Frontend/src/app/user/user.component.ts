@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
 	constructor(private service: ApiServiceService) {
 		this.user = new User();
 		this.user.isAdmin = true;
+		this.user.fullName = 'Sucky Wuck';
 		this.route = '';
 	}
 

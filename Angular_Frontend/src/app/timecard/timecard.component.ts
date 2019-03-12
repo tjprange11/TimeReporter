@@ -11,7 +11,10 @@ export class TimecardComponent implements OnInit {
 	mostRecentTimecard: Timecard;
 	mostRecentWorkdays: Workday[];
 	timecardList: Timecard[];
-	constructor() {}
+	route: string;
+	constructor() {
+		this.route = '';
+	}
 
 	ngOnInit() {}
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { User } from './Models/User';
 
 @Injectable({
 	providedIn: 'root'
@@ -13,9 +14,23 @@ export class AuthService {
 	}
 
 	register(credentials) {
-		this.http.post<any>('https://localhost:44345/api/account/register', credentials).subscribe((res) => {
-			this.authenticate(res);
+		if (this.validateRegister(credentials.email)) {
+			this.http.post<any>('https://localhost:44345/api/account/register', credentials).subscribe((res) => {
+				this.authenticate(res);
+			});
+		}
+	}
+
+	validateRegister(email: string) {
+		var users: any = this.http.get('https://localhost:44345/api/Users').subscribe((res) => {
+			users = res;
 		});
+		users.forEach((element: User) => {
+			if (element.email == email) {
+				return false;
+			}
+		});
+		return true;
 	}
 
 	login(credentials) {

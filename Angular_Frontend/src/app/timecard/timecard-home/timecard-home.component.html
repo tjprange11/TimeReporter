@@ -1,0 +1,25 @@
+<table class="currentTimecard" *ngIf="mostRecentTimecard">
+    <th>Start Date : {{ mostRecentTimecard.startDate }}</th>
+    <th>End Date : {{ mostRecentTimecard.endDate }}</th>
+  </table>
+  <div style="height: 20px"></div>
+  <table class="currentTimecard" *ngIf="mostRecentTimecard">
+    <tr>
+      <th>Date</th>
+      <th>Task</th>
+      <th>Hours Worked</th>
+      <th>Approved</th>
+    </tr>
+    <tr *ngFor="let mostRecentWorkday of mostRecentWorkdays">
+      <td>{{ mostRecentWorkday.date }}</td>
+      <td>{{ getTaskName(mostRecentWorkday.taskId) }}</td>
+      <td>{{ mostRecentWorkday.hoursWorked }}</td>
+      <td *ngIf="mostRecentWorkday.approved">
+          <mat-icon>done</mat-icon>
+      </td>
+    </tr>
+  </table>
+  <p *ngIf="!mostRecentTimecard" class="noTimecard">
+    No Timecards!
+  </p>
+  <button mat-raised-button [routerLink]="['create']" color="primary">Create Timecard</button>
