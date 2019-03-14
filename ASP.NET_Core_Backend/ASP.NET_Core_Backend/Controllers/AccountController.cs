@@ -31,6 +31,7 @@ namespace ASP.NET_Core_Backend.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _configuration;
+        private TimeReporterContext db = new TimeReporterContext();
 
         public AccountController(
             UserManager<IdentityUser> userManager,
@@ -43,6 +44,12 @@ namespace ASP.NET_Core_Backend.Controllers
             _configuration = configuration;
         }
 
+        [HttpGet("user")]
+        public Models.User Get()
+        {
+            var email = User.FindFirst("sub").Value;
+            return db.Users.Where(user => user.Email.Equals(email)).First();
+        }
         [HttpPost("login")]
         public async Task<object> Login([FromBody] Credentials model)
         {

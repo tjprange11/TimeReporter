@@ -1,0 +1,35 @@
+<table class="currentTimecard" *ngIf="mainTimecard">
+  <th>Start Date : {{ mainTimecard.startDate }}</th>
+  <th>End Date : {{ mainTimecard.endDate }}</th>
+</table>
+<div style="height: 20px"></div>
+<table class="currentTimecard" *ngIf="mainWorkdays">
+  <tr>
+    <th>Date</th>
+    <th>Task</th>
+    <th>Hours Worked</th>
+    <th>Approved</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let mainWorkday of mainWorkdays">
+    <td>{{ mainWorkday.date }}</td>
+    <td>{{ getTaskName(mainWorkday.taskId) }}</td>
+    <td><input type="number" [(ngModel)]="mainWorkday.hoursWorked"></td>
+    <td *ngIf="mainWorkday.approved">
+        <mat-icon>done</mat-icon>
+    </td>
+    <td>
+      <mat-icon>pencil_alt</mat-icon>
+    </td>
+  </tr>
+  <tr>
+    <td>Total Hours : {{ getTotalHours() }} </td>
+  </tr>
+  <button mat-icon-button>
+    <mat-icon>add_circle_outline</mat-icon>
+    Add Work day
+  </button>
+</table>
+<p *ngIf="!timecard" class="noTimecard">
+  No Timecards!
+</p>

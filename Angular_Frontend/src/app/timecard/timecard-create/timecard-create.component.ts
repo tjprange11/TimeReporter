@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { User } from 'src/app/Models/User';
+import { Timecard } from 'src/app/Models/Timecard';
+import { TimecardApiService } from '../timecard-api.service';
 
 @Component({
 	selector: 'app-timecard-create',
@@ -7,23 +10,28 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 	styleUrls: [ './timecard-create.component.css' ]
 })
 export class TimecardCreateComponent implements OnInit {
+	@Input() user: User;
 	myForm: FormGroup;
-	myFilter = (d: Date): boolean => {
-		const day = d.getDay();
-		// Prevent Saturday and Sunday from being selected.
-		return day == 1;
-	};
 
-	constructor(private fb: FormBuilder) {}
+	constructor(private fb: FormBuilder, private service: TimecardApiService) {}
 
 	ngOnInit() {
 		this.myForm = this.fb.group({
-			startDate: [ Date(), [ Validators.required ] ],
-			password: [ '', [ Validators.required ] ]
+			startDate: [ { value: Date(), disabled: true }, [ Validators.required ] ]
 		});
 
 		this.myForm.valueChanges.subscribe(console.log);
 	}
 
-	create(formValue) {}
+	create(formValue) {
+		var timecard = new Timecard();
+		timecard.startDate = formValue;
+		timecard.userId = this.user.id;
+		timecard.endDate = this.getEndDate(formValue);
+		this.service.postTimecard(timecard);
+	}
+	getEndDate(value: Date): Date {
+		value.setDate(value.getDate() + 6);
+		return value;
+	}
 }

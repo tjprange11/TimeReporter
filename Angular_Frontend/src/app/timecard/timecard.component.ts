@@ -8,13 +8,7 @@ import { Workday } from '../Models/Workday';
 	styleUrls: [ './timecard.component.css' ]
 })
 export class TimecardComponent implements OnInit {
-	mostRecentTimecard: Timecard;
-	mostRecentWorkdays: Workday[];
-	timecardList: Timecard[];
-	route: string;
-	constructor() {
-		this.route = '';
-	}
+	constructor() {}
 
 	ngOnInit() {}
 }

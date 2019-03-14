@@ -48,4 +48,10 @@ export class AuthService {
 	logout() {
 		localStorage.removeItem('token');
 	}
+
+	getUser() {
+		this.http.get('http://localhost:44345/api/account').subscribe((res) => {
+			return res;
+		});
+	}
 }

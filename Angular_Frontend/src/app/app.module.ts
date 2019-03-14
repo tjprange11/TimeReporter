@@ -32,9 +32,12 @@ import { TimecardCreateComponent } from './timecard/timecard-create/timecard-cre
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import { HomeComponent } from './user/home/home.component';
 import { TimecardHomeComponent } from './timecard/timecard-home/timecard-home.component';
+import { TimecardDetailsComponent } from './timecard/timecard-details/timecard-details.component';
+import { WorkdayCreateComponent } from './workday/workday-create/workday-create.component';
+import { WorkdayDetailsComponent } from './workday/workday-details/workday-details.component';
 
 @NgModule({
-	declarations: [ AppComponent, TimecardComponent, UserComponent, LoginComponent, RegisterComponent, TimecardCreateComponent, UserCreateComponent, HomeComponent, TimecardHomeComponent ],
+	declarations: [ AppComponent, TimecardComponent, UserComponent, LoginComponent, RegisterComponent, TimecardCreateComponent, UserCreateComponent, HomeComponent, TimecardHomeComponent, TimecardDetailsComponent, WorkdayCreateComponent, WorkdayDetailsComponent ],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
