@@ -7,6 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './user/home/home.component';
 import { TimecardCreateComponent } from './timecard/timecard-create/timecard-create.component';
 import { TimecardHomeComponent } from './timecard/timecard-home/timecard-home.component';
+import { UserCreateComponent } from './user/user-create/user-create.component';
+import { CompanyCreateComponent } from './company/company-create/company-create.component';
 
 const routes: Routes = [
 	{ path: '', component: LoginComponent },
@@ -22,8 +24,14 @@ const routes: Routes = [
 					{ path: 'create', component: TimecardCreateComponent }
 				]
 			},
-			{ path: '', component: HomeComponent }
+			{ path: '', component: HomeComponent },
+			{ path: 'create', component: UserCreateComponent }
 		]
+	},
+	{
+		path: 'company',
+		component: CompanyCreateComponent,
+		children: [ { path: 'create', component: CompanyCreateComponent } ]
 	},
 	{ path: 'register', component: RegisterComponent },
 	{ path: 'login', component: LoginComponent }

@@ -35,9 +35,11 @@ import { TimecardHomeComponent } from './timecard/timecard-home/timecard-home.co
 import { TimecardDetailsComponent } from './timecard/timecard-details/timecard-details.component';
 import { WorkdayCreateComponent } from './workday/workday-create/workday-create.component';
 import { WorkdayDetailsComponent } from './workday/workday-details/workday-details.component';
+import { CompanyCreateComponent } from './company/company-create/company-create.component';
+import { CreateCompanyAdminComponent } from './company/create-company-admin/create-company-admin.component';
 
 @NgModule({
-	declarations: [ AppComponent, TimecardComponent, UserComponent, LoginComponent, RegisterComponent, TimecardCreateComponent, UserCreateComponent, HomeComponent, TimecardHomeComponent, TimecardDetailsComponent, WorkdayCreateComponent, WorkdayDetailsComponent ],
+	declarations: [ AppComponent, TimecardComponent, UserComponent, LoginComponent, RegisterComponent, TimecardCreateComponent, UserCreateComponent, HomeComponent, TimecardHomeComponent, TimecardDetailsComponent, WorkdayCreateComponent, WorkdayDetailsComponent, CompanyCreateComponent, CreateCompanyAdminComponent ],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,

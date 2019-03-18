@@ -1,0 +1,23 @@
+<mat-card-title>Create Company</mat-card-title>
+<div class="container">
+    <form [formGroup]="myForm" (ngSubmit)="create(myForm.value)">
+  
+      Value : {{ myForm.value | json }}
+    
+      <hr>
+  
+      <mat-form-field>
+        <input matInput placeholder="Company Name" formControlName="name" autocomplete="off">
+  
+        <mat-error *ngIf="name.invalid && name.touched">
+          Required
+        </mat-error>
+    
+      </mat-form-field>
+  
+      <hr>
+    
+      <button mat-raised-button [disabled]="myForm.invalid" color="primary" [routerLink]="['/create-admin-user', this.name]">Create Company</button>
+    </form>
+  </div>
+

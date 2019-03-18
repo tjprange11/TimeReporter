@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiServiceService } from 'src/app/api-service.service';
+import { User } from 'src/app/Models/User';
 
 @Component({
 	selector: 'app-user-create',
@@ -8,6 +9,7 @@ import { ApiServiceService } from 'src/app/api-service.service';
 	styleUrls: [ './user-create.component.css' ]
 })
 export class UserCreateComponent implements OnInit {
+	@Input() user: User;
 	myForm: FormGroup;
 
 	constructor(private fb: FormBuilder, private service: ApiServiceService) {}
@@ -21,7 +23,7 @@ export class UserCreateComponent implements OnInit {
 			isSupervisor: [ false ],
 			isAdmin: [ false ],
 			deleted: [ false ],
-			companyId: [ '' ]
+			companyId: [ this.user.companyId ]
 		});
 
 		this.myForm.valueChanges.subscribe(console.log);

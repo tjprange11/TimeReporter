@@ -14,11 +14,9 @@ export class AuthService {
 	}
 
 	register(credentials) {
-		if (this.validateRegister(credentials.email)) {
-			this.http.post<any>('https://localhost:44345/api/account/register', credentials).subscribe((res) => {
-				this.authenticate(res);
-			});
-		}
+		this.http.post<any>('https://localhost:44345/api/account/register', credentials).subscribe((res) => {
+			this.authenticate(res);
+		});
 	}
 
 	validateRegister(email: string) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-register',
@@ -9,6 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
 	myForm: FormGroup;
+	router: Router;
 	constructor(private service: AuthService, private fb: FormBuilder) {}
 
 	ngOnInit() {
@@ -29,6 +31,9 @@ export class RegisterComponent implements OnInit {
 	}
 
 	register(formValue) {
-		this.service.register(formValue);
+		if (this.service.validateRegister(formValue.email)) {
+			this.service.register(formValue);
+			this.router.navigate([ '/user', this.service.getUser() ]);
+		}
 	}
 }
